@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MovieProject/MovieProject.csproj" />
+  <Project Path="MovieProject.Application/MovieProject.Application.csproj" />
+  <Project Path="MovieProject.Core/MovieProject.Core.csproj" />
+  <Project Path="MovieProject.Infrastructure/MovieProject.Infrastructure.csproj" />
+</Solution>
