@@ -77,6 +77,7 @@ void AddRepositories(IServiceCollection service)
     service.AddScoped<ICrudRepository<Genre, Object>, GenreRepository>();
     service.AddScoped<ICrudRepository<Review, Object>, ReviewRepository>();
     service.AddScoped<ICrudRepository<User, Object>, UserRepository>();
+    service.AddScoped<ICrudRepository<Movie, Object>, MovieRepository>();
     service.AddScoped<IAuthRepository, UserRepository>();
 }
 
