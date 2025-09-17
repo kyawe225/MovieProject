@@ -1,14 +1,14 @@
-using Mediator;
-using MovieProject.Application.Models;
-using MovieProject.Core.Entity;
 using System;
 using System.ComponentModel.DataAnnotations;
+using Mediator;
+using Microsoft.AspNetCore.Http;
+using MovieProject.Application.Models;
+using MovieProject.Core.Entity;
 
 namespace MovieProject.Application.Features.Movies;
 
-public class UpdateMovieCommand : IRequest<ResponseModel<Unit?>>
+public class CreateMovieCommand : IRequest<ResponseModel<string>>
 {
-    public string Id { set; get; }
     [Required]
     public string Title { set; get; }
     [Required]
@@ -16,16 +16,17 @@ public class UpdateMovieCommand : IRequest<ResponseModel<Unit?>>
     [Required]
     public DateTime ReleaseDate { set; get; }
     [Required]
-    public string PosterUrl { set; get; }
+    public IFormFile PosterUrl { set; get; }
     [Required]
     public decimal Rating { set; get; } // this should be rotten tomato rating
     [Required]
     public long DurationInMinutes { set; get; }
+
     public Movie ToDomainEntity()
     {
         return new Movie
         {
-            Id = Id,
+            Id = Guid.NewGuid().ToString(),
             Title = Title,
             Description = Description,
             ReleaseDate = ReleaseDate,

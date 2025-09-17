@@ -12,8 +12,8 @@ public class CreateMovieHandler(ICrudRepository<Movie, Object> repository) : IRe
 {
     public async ValueTask<ResponseModel<string>> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
     {
-        var actor = request.ToDomainEntity();
-        var result = await repository.save(actor,cancellationToken);
+        var entity = request.ToDomainEntity();
+        var result = await repository.save(entity,cancellationToken);
         if (!result)
         {
             return new ResponseModel<string>()

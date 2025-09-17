@@ -6,7 +6,7 @@ using MovieProject.Core.Services;
 
 namespace MovieProject.Application.Features.Movies;
 
-public class DeleteMovieHandler(ICrudRepository<Review, Object> _repository) : IRequestHandler<DeleteMovieCommand, ResponseModel<Unit?>>
+public class DeleteMovieHandler(ICrudRepository<Movie, Object> _repository) : IRequestHandler<DeleteMovieCommand, ResponseModel<Unit?>>
 {
     public async ValueTask<ResponseModel<Unit?>> Handle(DeleteMovieCommand request, CancellationToken cancellationToken)
     {

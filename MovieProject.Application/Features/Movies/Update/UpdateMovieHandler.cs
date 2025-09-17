@@ -30,7 +30,7 @@ public class UpdateMovieHandler(ICrudRepository<Movie, Object> _repository) : IR
         }
         return new ResponseModel<Unit?>
         {
-            Message = "Updated Review Successfully",
+            Message = "Updated Movie Successfully",
             Status = "200"
         };
     }
