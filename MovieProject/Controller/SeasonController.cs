@@ -22,7 +22,7 @@ namespace MovieProject.Controller
         }
 
         [HttpGet("list")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType<ResponseModel<List<ListSeasonResponse>>>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> List()
         {
@@ -31,7 +31,7 @@ namespace MovieProject.Controller
         }
         
         [HttpPut("{Id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType<ResponseModel<Unit?>>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(string Id, [FromBody] UpdateSeasonCommand command)
         {
@@ -41,7 +41,7 @@ namespace MovieProject.Controller
         }
 
         [HttpGet("{Id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType<ResponseModel<ListSeasonResponse>>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Detail(string Id)
         {
@@ -50,7 +50,7 @@ namespace MovieProject.Controller
         }
         
         [HttpDelete("{Id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType<ResponseModel<Unit?>>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete(string Id)
         {
