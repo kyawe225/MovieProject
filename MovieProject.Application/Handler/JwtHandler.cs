@@ -38,7 +38,7 @@ namespace MovieProject.Handler
                 new Claim(ClaimTypes.GivenName , user.Name),
                 new Claim(ClaimTypes.Name, "access"),
                 new Claim(ClaimTypes.Email , user.Email),
-                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(JwtRegisteredClaimNames.Name, user.Name),
                 new Claim(ClaimTypes.Role , user.RoleId),
                 new Claim(JwtRegisteredClaimNames.Jti , Guid.NewGuid().ToString())
             };
@@ -59,6 +59,7 @@ namespace MovieProject.Handler
             {
                 new Claim(ClaimTypes.NameIdentifier , user.Id),
                 new Claim(ClaimTypes.GivenName , user.Name),
+                new Claim(JwtRegisteredClaimNames.Name, user.Name),
                 new Claim(ClaimTypes.Email , user.Email),
                 new Claim(ClaimTypes.Name, "refresh"),
                 new Claim(ClaimTypes.Role , user.RoleId),
