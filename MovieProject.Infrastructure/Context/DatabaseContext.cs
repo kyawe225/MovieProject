@@ -19,7 +19,7 @@ public class DatabaseContext : DbContext , IDatabaseService
     public DbSet<Genre> tbl_categories { set; get; }
     public DbSet<User> tbl_users { set; get; }
     public DbSet<Series> tbl_series { set; get; }
-    public DbSet<Seasons> tbl_seasons { set; get; }
+    public DbSet<Season> tbl_seasons { set; get; }
     public DbSet<Episode> tbl_episdes { set; get; }
     public DbSet<Movie> tbl_movies { set; get; }
     public DbSet<Review> tbl_reviews { set; get; }

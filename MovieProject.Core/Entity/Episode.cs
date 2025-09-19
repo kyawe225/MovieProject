@@ -10,7 +10,7 @@ public class Episode
     public string Id { set; get; }
     public string SeasonId { set; get; }
     [ForeignKey(nameof(SeasonId))]
-    public virtual Seasons? Season { set; get; }
+    public virtual Season? Season { set; get; }
     public string Title { set; get; }
     public int EpisodeNumber { set; get; }
     public string Description { set; get; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieProject.Core.Entity;
 
-public class Seasons
+public class Season
 {
     [Key]
     public string Id { set; get; }

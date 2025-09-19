@@ -2,7 +2,7 @@ using Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieProject.Application;
-using MovieProject.Application.Features.Reviews;
+using MovieProject.Application.Features.PublisherCompanies;
 using MovieProject.Application.Models;
 
 namespace MovieProject.Controller
@@ -10,12 +10,12 @@ namespace MovieProject.Controller
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerChallengeType.AccessToken)]
-    public class ReviewController(IMediator _messageBus, ILogger<ReviewController> _logger) : ControllerBase
+    public class PublisherCompanyController(IMediator _messageBus, ILogger<PublisherCompanyController> _logger) : ControllerBase
     {
         [HttpPost("add")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Add([FromBody] CreateReviewCommand dto)
+        public async Task<IActionResult> Add([FromBody] CreatePublisherCompanyCommand dto)
         {
             var response = await _messageBus.Send<ResponseModel<string>>(dto, HttpContext.RequestAborted);
             return Ok(response);
@@ -26,17 +26,17 @@ namespace MovieProject.Controller
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> List()
         {
-            var response = await _messageBus.Send<ResponseModel<List<ListReviewResponse>>>(new ListReviewQuery(), HttpContext.RequestAborted);
+            var response = await _messageBus.Send<ResponseModel<List<ListPublisherCompanyResponse>>>(new ListPublisherCompanyQuery(), HttpContext.RequestAborted);
             return Ok(response);
         }
-        
+
         [HttpPut("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(string Id, [FromBody] UpdateReviewCommand command)
+        public async Task<IActionResult> Update(string Id, [FromBody] UpdatePublisherCompanyCommand command)
         {
             command.Id = Id;
-            var response= await _messageBus.Send<ResponseModel<Unit?>>(command,HttpContext.RequestAborted);
+            var response = await _messageBus.Send<ResponseModel<Unit?>>(command, HttpContext.RequestAborted);
             return Ok(response);
         }
 
@@ -45,16 +45,16 @@ namespace MovieProject.Controller
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Detail(string Id)
         {
-            var response= await _messageBus.Send<ResponseModel<ListReviewResponse>>(new DetailReviewCommand(Id),HttpContext.RequestAborted);
+            var response = await _messageBus.Send<ResponseModel<ListPublisherCompanyResponse>>(new DetailPublisherCompanyCommand(Id), HttpContext.RequestAborted);
             return Ok(response);
         }
-        
+
         [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete(string Id)
         {
-            var response= await _messageBus.Send<ResponseModel<Unit?>>(new DeleteReviewCommand(Id), HttpContext.RequestAborted);
+            var response = await _messageBus.Send<ResponseModel<Unit?>>(new DeletePublisherCompanyCommand(Id), HttpContext.RequestAborted);
             return Ok(response);
         }
     }
